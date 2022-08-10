@@ -11,11 +11,88 @@
 </head>
 <body>
 
-    <div class="h1">MZ-WINES</div>
-        <p class="p">Bienvenido a MZ Wines! Vendedores de insumos para bodegas y cervecerías</p>
-       
-        
+    <div>
+        <h1 class="h1">MZ-WINES</h1>
+        <h2 class="h2">Bienvenido a MZ-Wines!</h2>
+        <p class="p">A continuación se mostrará un listado de los productos que tenemos en venta. Haciendo click en el nombre principal de cada item vas a poder ver los productos que tenemos disponibles en stock!</p>
+    </div> 
 
+      <!-- lista -->
+
+    <div class="divListas">
+        <h2>Lista de productos</h2>
+        <p class="pLi">Presione en el nombre principal de cada item para poder ver los productos en stock.</p>
+        <ul class="list2" id="subitemList">
+            <li class="item2">Cervezas
+                <ul class="sublist">
+                    <li class="subitem">Ipa Andina</li>
+                    <li class="subitem">Apa</li>
+                    <li class="subitem">Porter</li>               
+                </ul>
+            </li>
+            <li class="item2">Vinos
+                <ul class="sublist">
+                    <li class="subitem">Malbec</li>
+                    <li class="subitem">Cavernet Sauvignon</li>
+                    <li class="subitem">Merlot</li>
+                    <li class="subitem">Chardonnay</li>
+                    <li class="subitem">Syrah</li>
+                    <li class="subitem">Cavernet Franc</li>
+                </ul>
+            </li>
+            <li class="item2">Bebidas alcoholicas
+                <ul class="sublist">
+                    <li class="subitem">Whisky</li>
+                    <li class="subitem">Ron</li>
+                    <li class="subitem">Gin</li>
+                </ul>
+            </li>        
+        </ul>
+    </div>
+
+        <!-- EMPIEZAN LAS CARDS -->
+
+    <div class="cards">
+        <h3 class="h3Cards">En caso que quieras seleccionar un producto de forma manual, podes dar click sobre el recuadro y se irán agregando al carrito.</h3>
+        <div>
+
+            <h4>Selecciona los productos que desees adquirir haciendo click sobre su recuadro.</h4>
+            <p>Cantidad de productos agregados al carrito: </p>
+            <input type="number" placeholder="cant"  id="cantidad" readonly /><br><br>    
+        </div>
+        <div id="bebidasDiv"></div>
+    </div>
+
+        <!-- footer -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="./img/logo.jpg" alt="Logo de SLee Dw">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>FAMILIA MZ-WINES</h2>
+                <p>Si venís a Mendoza visitanos!</p>
+                <p>Visitas guiadas a bodegas, degustaciones y más!</p>
+            </div>
+            <div class="box">
+                <h2>Seguinos en nuestras redes!</h2>                
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>MzWines</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>  
+
+
+
+      <!-- scripts -->
+
+    <script src="./JS/class/scritp2.js" ></script>
     <script src="./JS/class/insumos.js"></script>
     <script src="./JS/script.js" ></script>
 

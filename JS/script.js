@@ -1,6 +1,5 @@
-
 let insumos_arreglo = [];
-/* carga de insumos */
+
 let nuevo_insumo = new insumos("Malta", "Consumible", "Importado");
 nuevo_insumo.setId(1);
 insumos_arreglo.push(nuevo_insumo);
@@ -21,7 +20,7 @@ nuevo_insumo = new insumos("Botellas", "Almacenamiento por menor", "Fabricacion 
 nuevo_insumo.setId(5);
 insumos_arreglo.push(nuevo_insumo);
 
-//pido datos al usuario para carga de nuevo insumo//
+//datos para carga de nuevo insumo//
 function carga_insumos() {
   let nombre;
   let tipo;
@@ -72,35 +71,32 @@ do {
   );
 
   switch (operacion) {
-    case "1":
-      //lista de insumos
+    case "1":      
       let mensaje = "Los insumos cargados en la base de datos son: ";
       mensaje += mostrar_lista_insumos(insumos_arreglo);
       alert(mensaje);
       break;
-    case "2":
-      //datos de 1 insumo a escribir
+
+    case "2":      
       let mensajelista ="Ingrese el nombre del Insumo del cual desea ver su informacion" +mostrar_lista_insumos(insumos_arreglo);
       nombre_insumo_buscado = prompt(mensajelista).toUpperCase();
 
-      //find que compara por nombre
+      //find 
       let insumoMostrado = insumos_arreglo.find((elemento) => elemento.nombre == nombre_insumo_buscado);
-
-      //si encontro el insumo lo guarda
+     
       if (insumoMostrado) {
         insumoMostrado.mostrarInsumo();
       } else {
         alert("El insumo buscado no se encuentra en la base de datos");
       }
       break;
+
     case "3":
-      //buscamos insumos filtrando por tipo
+      
       let tipobuscado = prompt("Escriba el tipo de insumo que desea buscar:\n- Consumible\n-Almacenamiento por mayor \n- Almacenamiento por menor").toUpperCase();
-
-      //en tipobuscado guardo el tipo de insumo que quiere buscar el usuario y filtramos, guardo en un nuevo array
+      
       let insumo_array_tipo = insumos_arreglo.filter((elemento) => elemento.tipo == tipobuscado);
-
-      //si el nuevo array tiene elementos es porque encontro algun insumo que cumpla con el tipo
+      
       if (insumo_array_tipo.length > 0) {
         let mensaje2 ="Los insumos cargados en la base de datos con el tipo " +tipobuscado.toLowerCase() +" son:";
         mensaje2 += mostrar_lista_insumos(insumo_array_tipo);
@@ -111,22 +107,21 @@ do {
         );
       }
       break;
-    case "4":
-      //funcion carga_insumos que pide los datos al usuario y nos da un objeto tipo insumo que guardamos en InsumoS
+
+    case "4":      
       let InsumoS = carga_insumos();
-      InsumoS.setId(insumos_arreglo.length + 1);//el nuevo ID del insumo sera la longitud actual del arreglo principal +1
-      InsumoS.mostrarInsumo(); //muestro los datos del nuevo insumo
-      insumos_arreglo.push(InsumoS); //lo agrego al arreglo principal
+      InsumoS.setId(insumos_arreglo.length + 1);
+      InsumoS.mostrarInsumo(); //datos del nuevo insumo
+      insumos_arreglo.push(InsumoS); //lo agrego 
       break;
+
     case "5":
-      //opcion para eliminar un insumo de la lista, lo buscamos por el nombre, la lista se muestra para poder elegir alguno
+      //eliminar un insumo de la lista
       let mensajelista2 ="Ingrese el nombre del Insumo que desea eliminar de la base de datos" +mostrar_lista_insumos(insumos_arreglo);
       let nombre_insumo_eliminado = prompt(mensajelista2).toUpperCase();
-
-      //con el filtro "some" primero reviso que el insumo que se quiera eliminar, pertenezca a nuestra lista de insumos
+      
       if(insumos_arreglo.some((elemento)=> elemento.nombre == nombre_insumo_eliminado)){
-        if (confirm("Esta seguro que desea eliminar el " +nombre_insumo_eliminado +" de la base de datos?")) {
-          //reemplazamos el arreglo original, por uno nuevo que filtra y deja afuera el insumo que se busca eliminar
+        if (confirm("Esta seguro que desea eliminar el " +nombre_insumo_eliminado +" de la base de datos?")) {          
           insumos_arreglo = insumos_arreglo.filter((elemento) => elemento.nombre != nombre_insumo_eliminado);
           alert("Insumo Eliminado con Exito");
         }
@@ -135,43 +130,40 @@ do {
         alert("Ingreso el nombre de un insumo que no existe en nuestra base de datos");
       }
       break;
+
     case "6":
-      //con esta opcion podremos modificar alguno de los elementos de la lista
+      //modificar elementos de la lista
       let mensajelista3 ="Ingrese el nombre del Insumo que desea modificar" +mostrar_lista_insumos(insumos_arreglo);
-      nombre_insumo_buscado = prompt(mensajelista3).toUpperCase();
+      nombre_insumo_buscado = prompt(mensajelista3).toUpperCase();      
       
-      //revisamos que exista el dinosaurio en nuestro array
       if(insumos_arreglo.some((elemento)=> elemento.nombre == nombre_insumo_buscado)){
-          //si dinosaurio existe lo buscamos con find y lo guardamos en dinobuscado
+          
           let insumoBuscado = insumos_arreglo.find((elemento) => elemento.nombre == nombre_insumo_buscado);
-          //con dinobuscado sacamos la posicion en el array original del dinosaurio buscado, para luego poder salvar su ID y posicion
+        
           let indice = insumos_arreglo.indexOf(insumoBuscado);
 
-          //pedimos los nuevos datos
+          //nuevos datos
           nombre = prompt("Ingrese el nuevo nombre del insumo");
           tipo = prompt("Ingrese el nuevo tipo del insumo");
           procedencia = prompt("Ingrese la nueva procedencia del insumo");
-
-
-          //el numero de ID se conserva con el original
+          
           let id = insumos_arreglo[indice].id;
-
-          //generamos un nuevo dinosaurio
+          
           let insumo_modificado = new insumos(nombre, tipo, procedencia);
           insumo_modificado.setId(id);
 
           alert("Insumo Actualizado con Exito");
           insumo_modificado.mostrarInsumo();
-
-          //el dinosaurio original en la posicion original es sobreescrito con los datos nuevos
+          
           insumos_arreglo[indice] = insumo_modificado;
       }
       else{
          alert("Ingreso el nombre de un insumo que no existe en nuestra base de datos");
       }
       break;
+
     case "7":
-      //con esta opcion ordenaremos la lista de dinosaurios en funcion del nombre de cada uno
+      //ordena la lista
       let ord = prompt("La lista se ordenara por nombre, si Selecciona A se ordenara de forma ascendente, si Selecciona D se ordenara de forma descendente").toUpperCase();
       if (ord == "A") {
         insumos_arreglo.sort((insumo1, insumo2) => {
