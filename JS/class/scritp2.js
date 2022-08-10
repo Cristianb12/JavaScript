@@ -105,7 +105,6 @@ function crear_caja_bebidas(bebidas){
         ctn.style.backgroundColor  = "#ffffff"; 
     }) ;
 
-
     ctn.addEventListener("click",()=>{
 
         bebidasDiv.removeChild(ctn);
